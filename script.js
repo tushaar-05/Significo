@@ -174,9 +174,64 @@ function themeChange(){
   })
 }
 
+function headingAnimation(){
+  let headingText = document.querySelector(".heading h1");
+  let clutter = "";
+  headingText.innerHTML.split("").forEach(function(char){
+    if (char === ""){
+      clutter += `<span>&nbsp;</span>`
+    } else{
+      clutter += `<span>${char}</span>`;
+    }
+  });
+  headingText.innerHTML = clutter;
+
+  gsap.set(".heading h1 span",{
+    opacity: 0
+  })
+  gsap.to(".heading h1 span",{
+    scrollTrigger:{
+      trigger: ".marqueecontainer",
+      start: "75% 40%",
+      end: "bottom 40%",
+      scrub: .2
+    },
+    opacity: 1,
+    stagger: .3,
+    ease: Power4
+  })
+}
+
+function craftCardAnimation() {
+  const cards = document.querySelectorAll(".rgt-card");
+
+  cards.forEach((c) => {
+    gsap.to(c, {
+      color: "#fff",
+      backgroundColor: "#000",
+      width: "75%",
+      opacity: 1,
+      duration: 1,
+      scrollTrigger: {
+        trigger: c,
+        start: "top 60%",
+        end: "bottom 50%",
+        scrub: .2
+      }
+    });
+  });
+}
+
 (function () {
     const locomotiveScroll = new LocomotiveScroll();
 })();
 
-themeChange();
+
+realAnimation();
 homeAnimation();
+teamAnimation();
+paraAnimation();
+capsuleAnnimation();
+themeChange();
+headingAnimation();
+craftCardAnimation();
