@@ -100,6 +100,41 @@ function teamAnimation(){
   });
 }
 
+function paraAnimation(){
+  let paras = document.querySelectorAll(".para");
+  paras.forEach(para => {
+    let textEl = para.querySelector(".para-text");
+    let clutter = "";
+    
+    textEl.textContent.split("").forEach(function(char){
+      if (char === ""){
+        clutter += `<span>&nbsp;</span>`;
+      } else{
+        clutter += `<span class="opacity-10 ">${char}</span>`;
+      }
+    });
+
+    textEl.innerHTML = clutter
+  });
+
+  gsap.set(".para-text span",{
+    opacity: .1
+  })
+
+  gsap.to(".para-text span", {
+    scrollTrigger:{
+      trigger: ".paras",
+      start: "top 50%",
+      end: "bottom 80%",
+      scrub: .2
+    },
+    color: "#0000ffd8",
+    opacity: 1,
+    stagger: .3,
+    ease: Power4
+  })
+}
+
 function themeChange(){
   document.querySelectorAll(".section").forEach(function(e){
     ScrollTrigger.create({
