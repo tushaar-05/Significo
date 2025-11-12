@@ -135,6 +135,29 @@ function paraAnimation(){
   })
 }
 
+function capsuleAnnimation(){
+  gsap.to(".capsule:nth-child(2)", {
+    scrollTrigger:{
+      trigger: ".capsules",
+      start: "top 70%",
+      end: "bottom bottom",
+      scrub: 2
+    },
+    y: 0,
+    ease: Power4
+  });
+  gsap.to(".capsule:nth-child(1)", {
+    scrollTrigger:{
+      trigger: ".capsules",
+      start: "top 70%",
+      end: "bottom bottom",
+      scrub: 2
+    },
+    y: 0,
+    ease: Power4
+  });
+}
+
 function themeChange(){
   document.querySelectorAll(".section").forEach(function(e){
     ScrollTrigger.create({
