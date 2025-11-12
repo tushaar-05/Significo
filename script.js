@@ -1,3 +1,42 @@
+function homeAnimation(){
+  gsap.set(".slidesm", { scale: 6 });
+  gsap.set(".rgt", { xPercent: -50 });
+  gsap.set(".lft", { xPercent: -40 });
+
+  let tl = gsap.timeline({
+    scrollTrigger: {
+      trigger: ".home",
+      start: "top top",
+      end: "bottom bottom",
+      scrub: .2
+    }
+  });
+
+  tl
+  .to(".vdodiv", {
+    '--clip': "0%",
+    ease: "power4.inOut",
+    duration: 3
+  }, 'a')
+  .to(".slidesm", {
+    scale: 1,
+    ease: "power3.inOut",
+    duration: 3
+  }, 'a')
+  .to(".lft", {
+    stagger: 0.25,
+    xPercent: -60,
+    ease: "power1.inOut",
+    duration: 4
+  }, 'a += 1')
+  .to(".rgt", {
+    stagger: 0.25,
+    xPercent: -45,
+    ease: "power1.inOut",
+    duration: 4
+  }, 'a += 1');
+}
+
 function themeChange(){
   document.querySelectorAll(".section").forEach(function(e){
     ScrollTrigger.create({
@@ -19,3 +58,4 @@ function themeChange(){
 })();
 
 themeChange();
+homeAnimation();
