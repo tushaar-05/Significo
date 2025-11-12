@@ -50,6 +50,56 @@ function realAnimation(){
   })
 }
 
+function teamAnimation(){
+  document.querySelectorAll(".listelm").forEach(function(el){
+    el.addEventListener("mouseenter", function(dets){
+      gsap.to(this.querySelector(".bluelayer"), {
+        height: "100%",
+        duration: 0.2
+      });
+
+      gsap.to(this.querySelectorAll(".list-left h3, .list-left h1, .listelm > div > h3"), {
+        color: "#fff",
+        ease: Power4,
+        duration: 0.2
+      });
+
+      gsap.to(this.querySelector(".picture"), {
+        opacity: 1,
+        duration: 0.3,
+        ease: "power2.out"
+      });
+    });
+
+    el.addEventListener("mousemove", function(dets){
+      gsap.to(this.querySelector(".picture"), {
+        x: gsap.utils.mapRange(0, window.innerWidth, -300, 300, dets.clientX),
+        duration: 0.2,
+        ease: "power2.out"
+      });
+    });
+
+    el.addEventListener("mouseleave", function(dets){
+      gsap.to(this.querySelector(".bluelayer"), {
+        height: "0%",
+        duration: 0.2
+      });
+      
+      gsap.to(this.querySelectorAll(".list-left h3, .list-left h1, .listelm > div > h3"), {
+        color: "#000",
+        ease: Power4,
+        duration: 0.2
+      });
+
+      gsap.to(this.querySelector(".picture"), {
+        opacity: 0,
+        duration: 0.3,
+        ease: "power2.in"
+      });
+    });
+  });
+}
+
 function themeChange(){
   document.querySelectorAll(".section").forEach(function(e){
     ScrollTrigger.create({
