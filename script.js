@@ -37,6 +37,19 @@ function homeAnimation(){
   }, 'a += 1');
 }
 
+function realAnimation(){
+  gsap.to('.slide', {
+    scrollTrigger: {
+      trigger: '.real',
+      start: "top top",
+      end: "bottom bottom",
+      scrub: 2.5
+    },
+    xPercent: -200,
+    ease: Power4
+  })
+}
+
 function themeChange(){
   document.querySelectorAll(".section").forEach(function(e){
     ScrollTrigger.create({
